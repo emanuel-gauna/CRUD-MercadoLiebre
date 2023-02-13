@@ -14,7 +14,7 @@
 			</div>
 		</div>
 		<div class="col-12">
-			<form action="/products/" method="post">
+			<form action="/products/" method="post" enctype="multipart/form-data">
 				<div class="row product-detail">
 					<div class="col-12 col-md-6">
 						<label for="name" class="form-label">Nombre del producto:</label>
@@ -36,12 +36,18 @@
 							<option value="visited">Últimos agregados</option>
 						</select>
 					</div>
+					<!-- el name: es el que va en la ruta dentro del single("")-->
+					<div class="col-12 col-md-6">
+						<label for="file" class="form-label">Imagen:</label>
+						<input type="file" id="price" name="product-img"  value="image" placeholder="Arrastra tu imagen aqui" class="form-input">
+					</div>
 					<div class="col-12">
 						<label for="description" class="form-label">Descipción:</label>
 						<textarea name="description" id="description" class="form-input"></textarea>
 					</div>
 					<div class="col-12">
-						<button type="submit" class="buy-now-button">Guardar producto</button>
+						
+						<button type="submit" name="product-img" class="buy-now-button">Guardar producto</button>
 					</div>
 				</div>
 			</form>

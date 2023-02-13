@@ -48,12 +48,14 @@ const controller = {
 			discount: req.body.discount,
 			category: req.body.category,
 			description: req.body.description,
-			image: "default-image.png",
+			image: req.file.image
 		}
 		products.push(newProduct);/* agregamos a los productos */
 		writeJson(products);/* escribir el json */
 		
-		res.send("producto agregado recientemente")
+		res.redirect("/products/",{
+			products
+		})
 	},
 
 	// Update - Form to edit
