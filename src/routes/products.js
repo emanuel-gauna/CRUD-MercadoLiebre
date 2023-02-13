@@ -14,11 +14,12 @@ router.get('/', productsController.index);
   
 
 /*** GET ONE PRODUCT ***/ 
-router.get('/detail/:id/', productsController.detail);  
+/* product seria el indice entonces ponemos http://localhost:3000/products/:id */
+router.get('/:id/', productsController.detail);  
 
 /*** EDIT ONE PRODUCT ***/ 
 router.get('/edit/:id/', productsController.edit); 
-router.put('/edit/:id/', productsController.update);  
+router.put('/:id', productsController.update);  
 
 
 /*** DELETE ONE PRODUCT***/ 

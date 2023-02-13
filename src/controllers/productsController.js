@@ -13,14 +13,16 @@ const writeJson = (products) => {
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
 const controller = {
-	// Root - Show all products
 	index: (req, res) => {
-		res.render("/products", toThousand)
+		res.render("products", {
+		    products,
+			toThousand
+	    })
 	},
 
 	// Detail - Detail from one product
 	detail: (req, res) => {
-		let productId = Number(req.params.id);
+		let productId = +req.params.id;
 		let product = products.find(product => {
 			return product.id == productId;
 		})
@@ -56,7 +58,7 @@ const controller = {
 
 	// Update - Form to edit
 	edit: (req, res) => {
-		let productId = Number(req.params.id);
+		let productId = +req.params.id;
 	    let productToEdit = products.find(product => product.id === productId);
 		res.render("product-edit-form", {
 			productToEdit,
