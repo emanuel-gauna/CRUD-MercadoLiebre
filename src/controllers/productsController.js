@@ -63,11 +63,11 @@ const controller = {
   // Update - Form to edit
   edit: (req, res) => {
     let productToEdit = products.find(
-      (producto) => producto.id == req.params.id
+      (producto) => producto.id == +req.params.id
     );
 
     res.render("product-edit-form.ejs", {
-      productToEdit,
+      productToEdit
     });
   },
   // Update - Method to update
