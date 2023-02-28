@@ -73,6 +73,7 @@ const controller = {
   // Update - Method to update
   update: (req, res) => {
     let productID = +req.params.id;
+    
     products.forEach((product) => {
       if (product.id === productID) {
         product.name = req.body.name;
@@ -80,7 +81,7 @@ const controller = {
         product.price = req.body.price;
         product.discount = req.body.discount;
         product.category = req.body.category;
-        product.image = req.file ? req.file.filename : "default-image.png"
+        product.image = req.file ? req.file.filename : "default-image.png";
       }
     });
     writeJSON(products);
