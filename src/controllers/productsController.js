@@ -63,7 +63,7 @@ const controller = {
   // Update - Form to edit
   edit: (req, res) => {
     let productToEdit = products.find(
-      (producto) => producto.id == +req.params.id
+      product => product.id === +req.params.id
     );
 
     res.render("product-edit-form.ejs", {
@@ -72,20 +72,25 @@ const controller = {
   },
   // Update - Method to update
   update: (req, res) => {
-    let productID = +req.params.id;
+    let productId = +req.params.id;
     
-    products.forEach((product) => {
-      if (product.id === productID) {
-        product.name = req.body.name;
-        product.description = req.body.description;
-        product.price = req.body.price;
-        product.discount = req.body.discount;
-        product.category = req.body.category;
-        product.image = req.file ? req.file.filename : "default-image.png";
+    let productsModify = products.map((product) => {
+      if (product.id === productId) {
+      let productModify = {
+        ...product,
+        name : req.body.name,
+        description : req.body.description,
+        price : req.body.price,
+        discount : req.body.discount,
+        category : req.body.category,
+        image : req.file ? req.file.filename : product.image
       }
+      return productModify
+    }
+    return product
     });
-    writeJSON(products);
-    return res.redirect( 200,'/products');
+    writeJSON(productsModify);
+    return res.redirect('/products');
   },
 
   // Delete - Delete one product from DB

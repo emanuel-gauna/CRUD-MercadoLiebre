@@ -38,7 +38,7 @@
                 type="text"
                 id="price"
                 name="price"
-                value="$<%-productToEdit.price %>"
+                value="<%-productToEdit.price %>"
                 placeholder="<%-productToEdit.price %>"
                 class="form-input"
               />
@@ -69,7 +69,7 @@
             </div>
             <div class="col-12 col-md-6">
               <label for="image" class="form-label">Imagenes:</label>
-              <input type="file"  id="image" name="image" value="<%= productToEdit.image %>" class="form-input input-img">
+              <input type="file"  id="image" name="product-image" value="<%= productToEdit.image %>" class="form-input input-img">
               <label for="image" class="form-label-arch-edit">Archivos a modificar: <%= productToEdit.image %></label>
             </div>
             <div class="col-12">

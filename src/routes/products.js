@@ -3,7 +3,7 @@ const  router= require('express').Router();
 // ************ Controller Require ************
 const productsController = require('../controllers/productsController');
 
-const {uploadProductImage} = require("../middlewares/upload");
+const uploadProductImage = require("../middlewares/upload");
 
 
 
@@ -20,7 +20,7 @@ router.post('/',  uploadProductImage.single('product-image') , productsControlle
 
 /*** EDIT ONE PRODUCT ***/ 
 router.get('/edit/:id/', productsController.edit); 
-router.put('/edit/:id', uploadProductImage.single("product-img") , productsController.update); 
+router.put('/edit/:id', uploadProductImage.single('product-image') , productsController.update); 
 
 /*** DELETE ONE PRODUCT***/ 
 router.delete('/delete/:id', productsController.destroy); 
